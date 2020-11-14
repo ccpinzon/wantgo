@@ -73,8 +73,6 @@ export default class Image extends Component {
                     dotListClass="custom-dot-list-style"
                     itemClass="carousel-item-padding-40-px"
                 >
-
-
                     {(this.fileArray || []).map(url => (
                         <div><img src={url} alt="..." className="marcoimagenes" /></div>
                     ))}
