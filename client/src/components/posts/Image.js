@@ -24,8 +24,8 @@ export default class Image extends Component {
     fileObj = [];
     fileArray = [];
 
-    constructor(props) {
-        super(props)
+    constructor() {
+        super({ onChange })
         this.state = {
             file: [null]
         }
@@ -81,7 +81,7 @@ export default class Image extends Component {
                 </Carousel>
 
                 <div className="form-group">
-                    <input type="file" className="form-control" onChange={this.uploadMultipleFiles} multiple />
+                    <input type="file" className="form-control" onChange={onChange} multiple />
                 </div>
 
 

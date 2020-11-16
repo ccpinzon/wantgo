@@ -13,14 +13,15 @@ connectDB();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+//multer
 const storage = multer.diskStorage({
   destination: path.join(__dirname, 'public/img/uploads'),
-  filename: (req, files, cb, filename) => {
-    console.log(files);
-    cb(null, uuid() + path.extname(files.originalname));
+  filename: (req, file, cb, filename) => {
+    cb(null, uuid() + path.extname(file.originalname));
   }
 })
 app.use(multer({ storage }).array('images', 3));
+//fin multer
 
 // Define Routes
 app.use('/api/users', require('./routes/api/users'));

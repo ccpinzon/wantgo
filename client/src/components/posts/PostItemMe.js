@@ -14,7 +14,7 @@ const PostItemMe = ({
     <tr>
       <td>
         <Link to={`/posts/${_id}`} className='btn btn-primary'>
-          <i className='fas fa-times' />
+          <i className='fas fa-check' />
         </Link>
         {!auth.loading && user === auth.user._id && (
           <button

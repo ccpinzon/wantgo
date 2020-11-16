@@ -171,10 +171,12 @@ const PostForm = ({ addPost, history }) => {
             </div>
           </div>
           <div className="col-md-8">
-            <Image
-              name="image"
-              value={image}
-              onChange={onChange} />
+            <div>
+              <Image
+                name="images"
+                value={images}
+                onChange={onChange} />
+            </div>
             <div className="">
               <label htmlFor="" className="btnmi">Descripción</label>
               <textarea
