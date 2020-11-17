@@ -68,6 +68,7 @@ const PostForm = ({ addPost, history }) => {
         encType="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
+          convertirDatosFormaData()
           addPost(formData, history.push('/posts'));
 
         }}>
