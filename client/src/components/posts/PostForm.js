@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
-import { Redirect } from 'react-router-dom';
 import Image from './Image';
+import ImageUploader from "react-images-upload";
 
-const PostForm = ({ addPost, history, onchance }) => {
-  const [formData, setFormData] = useState({
+const PostForm = ({ addPost, history }) => {
+
+
+  const [datos_Form, setdatos_FormData] = useState({
     text: "",
     name: "",
     titulo: "",
@@ -15,25 +17,49 @@ const PostForm = ({ addPost, history, onchance }) => {
     frase: "",
     valor: "",
     servicios: "",
-    categoria: "",
-    images: []
+    categoria: ""
+
   });
+  const formData = new FormData()
+  const convertirDatosFormaData = () => {
+    formData.append('text', datos_Form.text)
+    formData.append('titulo', datos_Form.titulo)
+    formData.append('name', datos_Form.name)
+    formData.append('tipo', datos_Form.tipo)
+    formData.append('frase', datos_Form.frase)
+    formData.append('valor', datos_Form.valor)
+    formData.append('categoria', datos_Form.categoria)
+    formData.append('servicios', datos_Form.servicios)
+    formData.append('ubicacion', datos_Form.ubicacion)
+  }
+  console.log(formData, 'aca los datos del form')
+  const obtenerImagen = (imagenes) => {
+    for (let i = 0; i < imagenes.length; i++) {
+      formData.append('images[]', imagenes[i], imagenes[i].name)
+    }
+  }
+  // const {
+  //   text,
+  //   titulo,
+  //   ubicacion,
+  //   tipo,
+  //   frase,
+  //   valor,
+  //   servicios,
+  //   categoria,
 
-  const {
-    text,
-    titulo,
-    ubicacion,
-    tipo,
-    frase,
-    valor,
-    servicios,
-    categoria,
-    images
-  } = formData;
+  // } = formData;
 
-  console.log(formData)
-  const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  // console.log(formData)
+  //const onChange = e =>
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (event) => {
+    setdatos_FormData({
+      ...datos_Form,
+      [event.target.name]: event.target.value
+
+    })
+  }
   return (
 
     <div className="container">
@@ -54,7 +80,7 @@ const PostForm = ({ addPost, history, onchance }) => {
                   type="text"
                   className="form-control"
                   name="ubicacion"
-                  value={ubicacion}
+                  value={datos_Form.ubicacion}
                   onChange={onChange}
                   required
                 />
@@ -66,7 +92,7 @@ const PostForm = ({ addPost, history, onchance }) => {
                   type="text"
                   className="form-control"
                   name="titulo"
-                  value={titulo}
+                  value={datos_Form.titulo}
                   onChange={onChange}
                   required
                 />
@@ -77,7 +103,7 @@ const PostForm = ({ addPost, history, onchance }) => {
                   type="text"
                   className="form-control"
                   name="categoria"
-                  value={categoria}
+                  value={datos_Form.categoria}
                   onChange={onChange}
                   required
                 />
@@ -88,7 +114,7 @@ const PostForm = ({ addPost, history, onchance }) => {
                   type="text"
                   className="form-control"
                   name="tipo"
-                  value={tipo}
+                  value={datos_Form.tipo}
                   onChange={onChange}
                   required
                 />
@@ -149,7 +175,7 @@ const PostForm = ({ addPost, history, onchance }) => {
                   type="text"
                   className="form-control"
                   name="frase"
-                  value={frase}
+                  value={datos_Form.frase}
                   onChange={onChange}
                   required
                   placeholder="maximo 40 caracteres"
@@ -162,7 +188,7 @@ const PostForm = ({ addPost, history, onchance }) => {
                   className="form-control"
                   placeholder="Usd"
                   name="valor"
-                  value={valor}
+                  value={datos_Form.valor}
                   onChange={onChange}
                   required
                 />
@@ -172,12 +198,12 @@ const PostForm = ({ addPost, history, onchance }) => {
           </div>
           <div className="col-md-8">
 
-            <Image
-              valor={images}
+            <ImageUploader
               name="images"
-              funcionEnviar={onChange}
-              onChange={onchance}
-
+              withIcon={true}
+              onChange={obtenerImagen}
+              imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+              maxFileSize={5242880}
             />
             <div className="">
               <label htmlFor="" className="btnmi">Descripción</label>
@@ -185,7 +211,7 @@ const PostForm = ({ addPost, history, onchance }) => {
                 type="text"
                 className="form-control"
                 name="text"
-                value={text}
+                value={datos_Form.text}
                 onChange={onChange}
                 required
                 placeholder="maximo 500 caracteres"
@@ -198,7 +224,7 @@ const PostForm = ({ addPost, history, onchance }) => {
                 type="text"
                 className="form-control"
                 name="servicios"
-                value={servicios}
+                value={datos_Form.servicios}
                 onChange={onChange}
                 required
                 placeholder="maximo 300 caracteres"
