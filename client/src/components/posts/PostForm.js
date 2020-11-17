@@ -69,8 +69,8 @@ const PostForm = ({ addPost, history }) => {
         onSubmit={e => {
           e.preventDefault();
           convertirDatosFormaData()
+          console.log(convertirDatosFormaData, "aca los datos")
           addPost(formData, history.push('/posts'));
-
         }}>
         <div className="row">
           <div className="col-md-4">
@@ -199,12 +199,14 @@ const PostForm = ({ addPost, history }) => {
           </div>
           <div className="col-md-8">
 
-            <ImageUploader
+            <input
+              type="file"
+              multiple
               name="images"
-              withIcon={true}
+              //  withIcon={true}
               onChange={obtenerImagen}
-              imgExtension={[".jpg", ".gif", ".png", ".gif"]}
-              maxFileSize={5242880}
+            // imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+            // maxFileSize={5242880}
             />
             <div className="">
               <label htmlFor="" className="btnmi">Descripción</label>
