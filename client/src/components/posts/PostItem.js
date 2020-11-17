@@ -4,27 +4,45 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 3,
+    slidesToSlide: 1 // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
+  }
+};
 const PostItem = ({
   addLike,
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date, titulo, categoria, ubicacion, servicios, tipo, frase, valor, path },
+  post: { _id, text, name, avatar, user, likes, comments, date, titulo, categoria, ubicacion, servicios, tipo, frase, valor, images },
   showActions
 }) => (
     <>
-      <div class="container py-3">
-        <div class="title h1 text-center">{ubicacion}</div>
-        <div class="card">
-          <div class="row ">
-            <div class="col-md-7 px-3">
-              <div class="card-block px-6">
-                <h4 class="card-title">{titulo}</h4>
-                <p class="card-text" style={{ fontSize: "12px" }}>
+      <div className="container py-3">
+        <div className="title h1 text-center">{ubicacion}</div>
+        <div className="card">
+          <div className="row ">
+            <div className="col-md-7 px-3">
+              <div className="card-block px-6">
+                <h4 className="card-title">{titulo}</h4>
+                <p className="card-text" style={{ fontSize: "12px" }}>
                   {text} <br />
                 </p>
-                <p class="card-text">Servicios ofrecidos: <span className="span">{servicios}</span> </p>
+                <p className="card-text">Servicios ofrecidos: <span className="span">{servicios}</span> </p>
                 <div className="row">
                   <div className="col-md-4">
                     <label >categoría: <span className="span">{categoria}</span>  </label>
@@ -50,33 +68,32 @@ const PostItem = ({
               </div>
             </div>
 
-            <div class="col-md-5">
-              <div id="CarouselTest" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#CarouselTest" data-slide-to="0" class="active"></li>
-                  <li data-target="#CarouselTest" data-slide-to="1"></li>
-                  <li data-target="#CarouselTest" data-slide-to="2"></li>
+            <div className="col-md-5">
+              <div id="CarouselTest" className="carousel slide" data-ride="carousel">
+                <Carousel
+                  swipeable={false}
+                  draggable={false}
+                  showDots={true}
+                  responsive={responsive}
+                  ssr={true} // means to render carousel on server-side.
+                  infinite={true}
+                  autoPlaySpeed={1000}
+                  keyBoardControl={true}
+                  customTransition="all .5"
+                  transitionDuration={500}
+                  containerClass="carousel-container"
+                  removeArrowOnDeviceType={["tablet", "mobile"]}
+                  dotListClass="custom-dot-list-style"
+                  itemClass="carousel-item-padding-40-px"
+                >
+                  {images.map(images => (
+                    <div key={images._id} className="imagenespost">
+                      <img src={images.path} alt="..." className="imagendentro" />
+                    </div>
+                  ))}
 
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block" src="https://picsum.photos/450/300?image=855" alt="" />
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block" src={path} alt="" />
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block" src="https://picsum.photos/450/300?image=355" alt="" />
-                  </div>
-                  <a class="carousel-control-prev" href="#CarouselTest" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" href="#CarouselTest" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
+
+                </Carousel>
               </div>
               <div className="row">
                 <div className="col-md-6">

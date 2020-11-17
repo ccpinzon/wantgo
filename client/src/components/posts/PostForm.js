@@ -5,7 +5,7 @@ import { addPost } from '../../actions/post';
 import { Redirect } from 'react-router-dom';
 import Image from './Image';
 
-const PostForm = ({ addPost, history }) => {
+const PostForm = ({ addPost, history, onchance }) => {
   const [formData, setFormData] = useState({
     text: "",
     name: "",
@@ -16,7 +16,7 @@ const PostForm = ({ addPost, history }) => {
     valor: "",
     servicios: "",
     categoria: "",
-    image: ""
+    images: []
   });
 
   const {
@@ -28,9 +28,10 @@ const PostForm = ({ addPost, history }) => {
     valor,
     servicios,
     categoria,
-    image
+    images
   } = formData;
 
+  console.log(formData)
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
   return (
@@ -92,7 +93,6 @@ const PostForm = ({ addPost, history }) => {
                   required
                 />
               </div>
-
               <div className="">
                 <img src="api.png" alt="" />
               </div>
@@ -171,12 +171,14 @@ const PostForm = ({ addPost, history }) => {
             </div>
           </div>
           <div className="col-md-8">
-            <div>
-              <Image
-                name="images"
-                value={images}
-                onChange={onChange} />
-            </div>
+
+            <Image
+              valor={images}
+              name="images"
+              funcionEnviar={onChange}
+              onChange={onchance}
+
+            />
             <div className="">
               <label htmlFor="" className="btnmi">Descripción</label>
               <textarea
@@ -223,3 +225,4 @@ export default connect(
   null,
   { addPost }
 )(PostForm);
+

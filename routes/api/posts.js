@@ -24,14 +24,6 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('-password');
       var ss = req.files;
-      //funcinal para  la variable
-      // for (var j = 0; j < ss.length; j++) {
-      //   var filename = ss[j].filename
-      //   //var path = + ss[j].filename;
-      //   var originalname = ss[j].originalname;
-      //   var mimetype = ss[j].mimetype;
-      //   var size = ss[j].size;
-      // };
       const newPost = new Post({
         text: req.body.text,
         name: user.name,
@@ -43,27 +35,23 @@ router.post(
         valor: req.body.valor,
         servicios: req.body.servicios,
         categoria: req.body.categoria,
-        //opcion original segun documentacion funciona para sola una imagen
-        images: {
-          filename: req.files.filename,
-          path: '/img/uploads/' + req.files.filename,
-          originalname: req.files.originalname,
-          mimetype: req.files.mimetype,
-          size: req.files.size,
-        },
-        //variable donde guarda solo una imagen con su path correcto
-        // images: {
-        //   filename: filename,
-        //   path: '/img/uploads/' + filename,
-        //   originalname: originalname,
-        //   mimetype: mimetype,
-        //   size: size,
-        // },
-        //metodo normal con da;o en path guarda con exito las 3 imgs pero con path erroneo
-        //images: ss,
+
         user: req.user.id
+
       });
 
+      for (var j = 0; j < ss.length; j++) {
+        var image = {
+          filename: ss[j].filename,
+          path: '/img/uploads/' + ss[j].filename,
+          originalname: ss[j].originalname,
+          mimetype: ss[j].mimetype,
+          size: ss[j].size,
+
+        }
+        newPost.images.push(image);
+
+      };
       const post = await newPost.save();
 
       res.json(post);

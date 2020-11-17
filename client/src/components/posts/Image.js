@@ -25,7 +25,7 @@ export default class Image extends Component {
     fileArray = [];
 
     constructor() {
-        super({ onChange })
+        super()
         this.state = {
             file: [null]
         }
@@ -39,6 +39,7 @@ export default class Image extends Component {
             this.fileArray.push(URL.createObjectURL(this.fileObj[0][i]))
         }
         this.setState({ file: this.fileArray })
+        console.log(this.fileArray, "aca el array con los datos de la imagen")
     }
 
     uploadFiles(e) {
@@ -74,17 +75,15 @@ export default class Image extends Component {
                     itemClass="carousel-item-padding-40-px"
                 >
                     {(this.fileArray || []).map(url => (
-                        <div><img src={url} alt="..." className="marcoimagenes" /></div>
+                        <div key={url}><img src={url} alt="..." className="marcoimagenes" /></div>
                     ))}
 
 
                 </Carousel>
 
                 <div className="form-group">
-                    <input type="file" className="form-control" onChange={onChange} multiple />
+                    <input type="file" name="images" className="form-control" onChange={this.props.funcionEnviar} value={this.props.valor} onchance={this.uploadFiles} multiple />
                 </div>
-
-
             </>
         )
     }
