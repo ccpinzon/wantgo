@@ -8,7 +8,7 @@ import ImageUploader from "react-images-upload";
 const PostForm = ({ addPost, history }) => {
 
 
-  const [datos_Form, setdatos_FormData] = useState({
+  const [formData, setFormData] = useState({
     text: "",
     name: "",
     titulo: "",
@@ -17,49 +17,30 @@ const PostForm = ({ addPost, history }) => {
     frase: "",
     valor: "",
     servicios: "",
-    categoria: ""
+    categoria: "",
 
   });
-  const formData = new FormData()
-  const convertirDatosFormaData = () => {
-    formData.append('text', datos_Form.text)
-    formData.append('titulo', datos_Form.titulo)
-    formData.append('name', datos_Form.name)
-    formData.append('tipo', datos_Form.tipo)
-    formData.append('frase', datos_Form.frase)
-    formData.append('valor', datos_Form.valor)
-    formData.append('categoria', datos_Form.categoria)
-    formData.append('servicios', datos_Form.servicios)
-    formData.append('ubicacion', datos_Form.ubicacion)
-  }
-  console.log(formData, 'aca los datos del form')
+
+  const {
+    text,
+    titulo,
+    ubicacion,
+    tipo,
+    frase,
+    valor,
+    servicios,
+    categoria,
+
+  } = formData;
+
+  console.log(formData)
   const obtenerImagen = (imagenes) => {
     for (let i = 0; i < imagenes.length; i++) {
       formData.append('images[]', imagenes[i], imagenes[i].name)
     }
   }
-  // const {
-  //   text,
-  //   titulo,
-  //   ubicacion,
-  //   tipo,
-  //   frase,
-  //   valor,
-  //   servicios,
-  //   categoria,
-
-  // } = formData;
-
-  // console.log(formData)
-  //const onChange = e =>
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-  const onChange = (event) => {
-    setdatos_FormData({
-      ...datos_Form,
-      [event.target.name]: event.target.value
-
-    })
-  }
+  const onChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   return (
 
     <div className="container">
@@ -68,7 +49,6 @@ const PostForm = ({ addPost, history }) => {
         encType="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
-          convertirDatosFormaData()
           addPost(formData, history.push('/posts'));
 
         }}>
@@ -81,7 +61,7 @@ const PostForm = ({ addPost, history }) => {
                   type="text"
                   className="form-control"
                   name="ubicacion"
-                  value={datos_Form.ubicacion}
+                  value={ubicacion}
                   onChange={onChange}
                   required
                 />
@@ -93,7 +73,7 @@ const PostForm = ({ addPost, history }) => {
                   type="text"
                   className="form-control"
                   name="titulo"
-                  value={datos_Form.titulo}
+                  value={titulo}
                   onChange={onChange}
                   required
                 />
@@ -104,7 +84,7 @@ const PostForm = ({ addPost, history }) => {
                   type="text"
                   className="form-control"
                   name="categoria"
-                  value={datos_Form.categoria}
+                  value={categoria}
                   onChange={onChange}
                   required
                 />
@@ -115,7 +95,7 @@ const PostForm = ({ addPost, history }) => {
                   type="text"
                   className="form-control"
                   name="tipo"
-                  value={datos_Form.tipo}
+                  value={tipo}
                   onChange={onChange}
                   required
                 />
@@ -176,7 +156,7 @@ const PostForm = ({ addPost, history }) => {
                   type="text"
                   className="form-control"
                   name="frase"
-                  value={datos_Form.frase}
+                  value={frase}
                   onChange={onChange}
                   required
                   placeholder="maximo 40 caracteres"
@@ -189,7 +169,7 @@ const PostForm = ({ addPost, history }) => {
                   className="form-control"
                   placeholder="Usd"
                   name="valor"
-                  value={datos_Form.valor}
+                  value={valor}
                   onChange={onChange}
                   required
                 />
@@ -201,6 +181,7 @@ const PostForm = ({ addPost, history }) => {
 
             <ImageUploader
               name="images"
+
               withIcon={true}
               onChange={obtenerImagen}
               imgExtension={[".jpg", ".gif", ".png", ".gif"]}
@@ -212,7 +193,7 @@ const PostForm = ({ addPost, history }) => {
                 type="text"
                 className="form-control"
                 name="text"
-                value={datos_Form.text}
+                value={text}
                 onChange={onChange}
                 required
                 placeholder="maximo 500 caracteres"
@@ -225,7 +206,7 @@ const PostForm = ({ addPost, history }) => {
                 type="text"
                 className="form-control"
                 name="servicios"
-                value={datos_Form.servicios}
+                value={servicios}
                 onChange={onChange}
                 required
                 placeholder="maximo 300 caracteres"
