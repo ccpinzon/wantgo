@@ -15,14 +15,14 @@ const TablePost = ({ getPostsMe, post: { posts } }) => {
 
             <table className="table" >
                 <thead >
-                    <tr>
-                        <th>Acciones</th>
-                        <th>Foto</th>
-                        <th >Creado por</th>
-                        <th >Fecha</th>
-                        <th >Titulo</th>
-                        <th >Valor</th>
-                        <th >Descripción</th>
+                    <tr >
+                        <th style={{ width: "100px", textAlign: "center" }} >Acciones</th>
+                        <th style={{ textAlign: "center" }}>Foto</th>
+                        <th style={{ width: "120px", textAlign: "center" }} >Creado por</th>
+                        <th style={{ textAlign: "center" }} >Fecha</th>
+                        <th style={{ width: "100px", textAlign: "center" }} >Titulo</th>
+                        <th style={{ width: "120px", textAlign: "center" }} >Valor</th>
+                        <th style={{ textAlign: "center" }}>Descripción</th>
                         <th />
                     </tr>
                 </thead>

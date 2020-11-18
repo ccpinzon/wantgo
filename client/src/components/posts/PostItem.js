@@ -33,42 +33,41 @@ const PostItem = ({
 }) => (
     <>
       <div className="container py-3">
-        <div className="title h1 text-center">{ubicacion}</div>
         <div className="card">
           <div className="row ">
             <div className="col-md-7 px-3">
               <div className="card-block px-6">
-                <h4 className="card-title">{titulo}</h4>
+                <div className="title h1 " style={{ color: "#00bfbf" }}>{ubicacion}</div>
+                <h4 className="card-title">Titulo del plan: {titulo}</h4>
                 <p className="card-text" style={{ fontSize: "12px" }}>
-                  {text} <br />
+                  {text}
                 </p>
-                <p className="card-text">Servicios ofrecidos: <span className="span">{servicios}</span> </p>
                 <div className="row">
-                  <div className="col-md-4">
-                    <label >categoría: <span className="span">{categoria}</span>  </label>
-                    <label > Tipo de transporte: <span className="span">{tipo} </span></label> <br />
+                  <div className="col-md-12">
+                    <label ><span style={{ color: "black" }}> <span style={{ color: "#01579b" }}>Servicios ofrecidos:</span> </span> <span className="span">{servicios}</span> </label> <br />
+                    <label style={{ color: "#01579b" }}>categoría: <span className="span">{categoria}</span>  </label> <br />
+                    <label > <span style={{ color: "#01579b" }}>Tipo de transporte: </span><span className="span">{tipo} </span></label>
                   </div>
-                  <div className="col-md-4">
-                    <label > Frase: <span className="span">{frase}</span></label>
-                    <label > Valor: <span className="span">{valor}</span></label>
-                  </div>
-                  <div className="col-md-1">
-                    <Link to={`/profile/${user}`}>
-                      <img className='round-img imgTable' src={avatar} alt='' />
-                    </Link>
-                  </div>
-                  <div className="col-md-2">
-                    <Link to={`/profile/${user}`}>
-                      <h4>{name}</h4>
-                    </Link>
+                  <div className="col-md-12">
+                    <label > <span style={{ color: "#01579b" }}>Frase:</span> <span className="span">{frase}</span></label>
                   </div>
                 </div>
-
-
               </div>
             </div>
 
             <div className="col-md-5">
+              <div className="row">
+                <div className="col-md-8">
+                  <p className='post-date'>
+                    Publicado el <span className="span"> <Moment format='YYYY/MM/DD'>{date}</Moment></span>
+                  </p>
+                </div>
+                <div className="col-md-4">
+                  <label > Valor: <span style={{ color: "red" }} >${valor}</span></label>
+                </div>
+              </div>
+
+
               <div id="CarouselTest" className="carousel slide" data-ride="carousel">
                 <Carousel
                   swipeable={false}
@@ -91,8 +90,6 @@ const PostItem = ({
                       <img src={images.path} alt="..." className="imagendentro" />
                     </div>
                   ))}
-
-
                 </Carousel>
               </div>
               <div className="row">
@@ -132,10 +129,17 @@ const PostItem = ({
                     </Fragment>
                   )}
                 </div>
-                <div className="col-md-6" >
-                  <p className='post-date'>
-                    Publicado el <span className="span"> <Moment format='YYYY/MM/DD'>{date}</Moment></span>
-                  </p>
+                <div className="row">
+                  {/* <div className="col-md-4">
+                    <Link to={`/profile/${user}`}>
+                      <img className='round-img imgTable' src={avatar} alt='' />
+                    </Link>
+                  </div> */}
+                  <div className="col-md-12" style={{ marginLeft: "70%" }}>
+                    <Link to={`/profile/${user}`}>
+                      <h4 style={{ fontSize: "17px" }}>by {name}</h4>
+                    </Link>
+                  </div>
                 </div>
 
 

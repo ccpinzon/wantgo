@@ -13,11 +13,12 @@ const PostItemMe = ({
 
     <tr>
       <td>
-        <Link to={`/posts/${_id}`} className='btn btn-primary'>
-          <i className='fas fa-check' />
+        <Link to={`/posts/${_id}`} className='btn btn-primary' style={{ width: "50%" }}>
+          <i className='fas fa-eye' />
         </Link>
         {!auth.loading && user === auth.user._id && (
           <button
+            style={{ width: "50%" }}
             onClick={() => deletePost(_id)}
             type='button'
             className='btn btn-danger'

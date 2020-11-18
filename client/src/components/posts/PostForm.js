@@ -181,7 +181,6 @@ const PostForm = ({ addPost, history }) => {
 
             <ImageUploader
               name="images"
-
               withIcon={true}
               onChange={obtenerImagen}
               imgExtension={[".jpg", ".gif", ".png", ".gif"]}
