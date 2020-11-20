@@ -8,15 +8,12 @@ import ImageUploader from "react-images-upload";
 const PostForm = ({ addPost, history }) => {
 
   const [pictures, setPictures] = useState([]);
-
   const onDrop = picture => {
     setPictures(picture);
     console.log(picture)
     for (let i = 0; i < pictures.length; i++) {
-      formData.append('images[]', pictures[i], pictures[i].name)
-
+      formData.append('images', pictures[i], pictures[i].name)
     }
-
   };
   const [datos_Form, setdatos_FormData] = useState({
     text: "",
@@ -42,19 +39,12 @@ const PostForm = ({ addPost, history }) => {
     formData.append('ubicacion', datos_Form.ubicacion)
   }
 
-  // const obtenerImagen = (imagenes) => {
-  //   for (let i = 0; i < imagenes.length; i++) {
-  //     formData.append('images[]', imagenes[i], imagenes[i].name)
-  //     console.log(imagenes[i], " aca el array con la info de las imagenes")
-  //   }
-  // }
-
   const onChange = (event) => {
     setdatos_FormData({
       ...datos_Form,
       [event.target.name]: event.target.value
     });
-    console.log(setdatos_FormData, "aca los datos detiados")
+
   }
   return (
 
@@ -65,12 +55,7 @@ const PostForm = ({ addPost, history }) => {
         onSubmit={e => {
           e.preventDefault();
           convertirDatosFormaData()
-          var fileField = document.querySelector("input[type='file']")
-          console.log(fileField.files, '')
-          for (const file of fileField.files) {
-            formData.append('images[]', file, file.name)
-          }
-          console.log(convertirDatosFormaData, "aca los datos")
+          onDrop();
           addPost(formData, history.push('/posts'));
         }}>
         <div className="row">
@@ -199,20 +184,14 @@ const PostForm = ({ addPost, history }) => {
             </div>
           </div>
           <div className="col-md-8">
-            <input
-              type="file"
-              name="images"
-              multiple
-            // withIcon={true}
-            // imgExtension={[".jpg", ".gif", ".png", ".gif"]}
-            //onChange={onDrop}
-            // maxFileSize={5242880} 
+            <ImageUploader
+              withPreview={true}
+              withIcon={true}
+              onChange={onDrop}
+              imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+              maxFileSize={5242880}
             />
-            {/* <input
-              type="file"
-              multiple            
-              onChange={obtenerImagen}         
-            /> */}
+
             <div className="">
               <label htmlFor="" className="btnmi">Descripción</label>
               <textarea

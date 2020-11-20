@@ -38,13 +38,13 @@ const PostSchema = new Schema({
   avatar: {
     type: String
   },
-  images: {
+  images: [{
     filename: { type: String },
     path: { type: String },
     originalname: { type: String },
     mimetype: { type: String },
     size: { type: Number },
-  },
+  }],
   visible: {
     type: Boolean,
     default: false

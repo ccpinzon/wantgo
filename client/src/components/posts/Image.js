@@ -10,6 +10,7 @@ const Image = props => {
     };
     return (
         <ImageUploader
+            withPreview={true}
             {...props}
             withIcon={true}
             onChange={onDrop}
