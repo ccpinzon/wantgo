@@ -28,7 +28,7 @@ const PostItem = ({
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date, titulo, categoria, ubicacion, servicios, tipo, frase, valor, images },
+  post: { _id, text, name, avatar, user, likes, comments, date, titulo, categoria, ubicacion, servicios, tipo, frase, avion, lancha, caminata, chiba, cuatrimoto, bicicleta, valor, images, carro, moto, caballo, moneda },
   showActions
 }) => (
     <>
@@ -46,7 +46,7 @@ const PostItem = ({
                   <div className="col-md-12">
                     <label ><span style={{ color: "black" }}> <span style={{ color: "#01579b" }}>Servicios ofrecidos:</span> </span> <span className="span">{servicios}</span> </label> <br />
                     <label style={{ color: "#01579b" }}>categoría: <span className="span">{categoria}</span>  </label> <br />
-                    <label > <span style={{ color: "#01579b" }}>Tipo de transporte: </span><span className="span">{tipo} </span></label>
+                    <label > <span style={{ color: "#01579b" }}>Tipo de transporte: </span><span className="span">{carro} {caballo} {moto} {chiba} {avion} {lancha} {caminata} {cuatrimoto} {bicicleta} </span></label>
                   </div>
                   <div className="col-md-12">
                     <label > <span style={{ color: "#01579b" }}>Frase:</span> <span className="span">{frase}</span></label>
@@ -63,7 +63,7 @@ const PostItem = ({
                   </p>
                 </div>
                 <div className="col-md-4">
-                  <label > Valor: <span style={{ color: "red" }} >${valor}</span></label>
+                  <label > Valor: <span style={{ color: "red" }} >${valor} {moneda}</span></label>
                 </div>
               </div>
 
@@ -96,7 +96,7 @@ const PostItem = ({
                 <div className="col-md-6">
                   {showActions && (
                     <Fragment>
-                      <button
+                      {/* <button
                         onClick={() => addLike(_id)}
                         type='button'
                         className='btn btn-light'
@@ -110,12 +110,10 @@ const PostItem = ({
                         className='btn btn-light'
                       >
                         <i className='fas fa-thumbs-down' />
-                      </button>
+                      </button> */}
                       <Link to={`/posts/${_id}`} className='btn btn-primary' style={{ fontSize: "12px" }}>
-                        Comentar{' '}
-                        {comments.length > 0 && (
-                          <span className='comment-count'>{comments.length}</span>
-                        )}
+
+                        <i className='fa fa-eye' />
                       </Link>
                       {!auth.loading && user === auth.user._id && (
                         <button
@@ -141,10 +139,7 @@ const PostItem = ({
                     </Link>
                   </div>
                 </div>
-
-
               </div>
-
             </div>
           </div>
         </div>

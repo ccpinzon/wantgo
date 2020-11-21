@@ -13,7 +13,7 @@ const upload = require("../../libs/storage")
 // @access   Private
 router.post(
   '/',
-  [auth, [check('text', 'descripcion es requerida').not().isEmpty()]],
+  [auth, [check('text', 'se requiere minimo una imagen').not().isEmpty()]],
 
   async (req, res) => {
     const errors = validationResult(req);
@@ -30,12 +30,20 @@ router.post(
         avatar: user.avatar,
         titulo: req.body.titulo,
         ubicacion: req.body.ubicacion,
-        tipo: req.body.tipo,
+        carro: req.body.carro,
+        moto: req.body.moto,
+        caballo: req.body.caballo,
+        lancha: req.body.lancha,
+        avion: req.body.avion,
+        caminata: req.body.caminata,
+        chiba: req.body.chiba,
+        cuatrimoto: req.body.cuatrimoto,
+        bicicleta: req.body.bicileta,
         frase: req.body.frase,
         valor: req.body.valor,
         servicios: req.body.servicios,
         categoria: req.body.categoria,
-
+        moneda: req.body.moneda,
         user: req.user.id
 
       });

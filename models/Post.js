@@ -38,6 +38,36 @@ const PostSchema = new Schema({
   avatar: {
     type: String
   },
+  carro: {
+    type: String
+  },
+  moto: {
+    type: String
+  },
+  caballo: {
+    type: String
+  },
+  lancha: {
+    type: String
+  },
+  avion: {
+    type: String
+  },
+  caminata: {
+    type: String
+  },
+  chiba: {
+    type: String
+  },
+  cuatrimoto: {
+    type: String
+  },
+  bicicleta: {
+    type: String
+  },
+  moneda: {
+    type: String
+  },
   images: [{
     filename: { type: String },
     path: { type: String },

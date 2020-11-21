@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import PostItem from './PostItem';
 import { getPosts } from '../../actions/post';
 import Pagination from '../Pagination';
+import PostItemT from './PostItemT';
 
 const Posts = ({ getPosts, post: { posts } }) => {
   useEffect(() => {
@@ -13,16 +13,14 @@ const Posts = ({ getPosts, post: { posts } }) => {
   return (
     <Fragment>
       <h1 className="large text-primary">Planes turisticos</h1>
-      <p className="lead">
-        <i className="fas fa-user" /> Bienvenido a WantGo
-      </p>
 
-      <div className="posts">
+      <div className="row">
         {posts.map((post) => (
-          <PostItem key={post._id} post={post} />
+          <PostItemT key={post._id} post={post} />
         ))}
+
       </div>
-      <Pagination />
+
     </Fragment>
   );
 };
