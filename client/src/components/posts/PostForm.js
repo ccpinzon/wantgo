@@ -233,7 +233,7 @@ const PostForm = ({ addPost, history }) => {
                   required
                 />
                 <select class="custom-select mr-sm-2" name="moneda" onChange={onchange} value={datos_Form.moneda}>
-                  <option selected>Moneda</option>
+                  <option selected>$</option>
                   <option value="COP">COP</option>
                   <option value="USD">USD</option>
                   <option value="EUR">EUR</option>

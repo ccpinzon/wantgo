@@ -28,7 +28,7 @@ const PostItem = ({
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date, titulo, categoria, ubicacion, servicios, tipo, frase, avion, lancha, caminata, chiba, cuatrimoto, bicicleta, valor, images, carro, moto, caballo, moneda },
+  post: { _id, text, name, avatar, user, likes, comments, date, titulo, categoria, ubicacion, servicios, tipo, frase, avion, visible, lancha, caminata, chiba, cuatrimoto, bicicleta, valor, images, carro, moto, caballo, moneda },
   showActions
 }) => (
     <>
@@ -96,7 +96,7 @@ const PostItem = ({
                 <div className="col-md-6">
                   {showActions && (
                     <Fragment>
-                      {/* <button
+                      <button
                         onClick={() => addLike(_id)}
                         type='button'
                         className='btn btn-light'
@@ -110,7 +110,7 @@ const PostItem = ({
                         className='btn btn-light'
                       >
                         <i className='fas fa-thumbs-down' />
-                      </button> */}
+                      </button>
                       <Link to={`/posts/${_id}`} className='btn btn-primary' style={{ fontSize: "12px" }}>
 
                         <i className='fa fa-eye' />

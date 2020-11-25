@@ -8,6 +8,7 @@ const { check, validationResult } = require('express-validator');
 const normalize = require('normalize-url');
 
 const User = require('../../models/User');
+const Role = require('../../models/Role');
 
 // @route    POST api/users
 // @desc     Register user
@@ -28,7 +29,8 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password, telefono, documento, pais } = req.body;
+    const { name, email, password, telefono, documento, pais, roles } = req.body;
+    //const rolesFound = await Role.find({ name: { $in: roles } });
 
     try {
       let user = await User.findOne({ email });
@@ -55,7 +57,8 @@ router.post(
         documento,
         pais,
         telefono,
-        password
+        password,
+        // roles: rolesFound.map((role) => role._id)
       });
 
       const salt = await bcrypt.genSalt(10);
