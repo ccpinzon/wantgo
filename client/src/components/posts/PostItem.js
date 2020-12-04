@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import frioimg from '../../img/frio.jpeg'
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -28,14 +29,14 @@ const PostItem = ({
   removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date, titulo, categoria, ubicacion, servicios, tipo, frase, avion, visible, lancha, caminata, chiba, cuatrimoto, bicicleta, valor, images, carro, moto, caballo, moneda },
+  post: { _id, text, name, avatar, user, likes, comments, date, titulo, categoria, ubicacion, servicios, tipo, frase, avion, visible, lancha, caminata, chiba, cuatrimoto, bicicleta, valor, images, carro, moto, caballo, moneda, frio, calor },
   showActions
 }) => (
     <>
       <div className="container py-3">
         <div className="card">
           <div className="row ">
-            <div className="col-md-7 px-3">
+            <div className="col-md-7 ">
               <div className="card-block px-6">
                 <div className="title h1 " style={{ color: "#00bfbf" }}>{ubicacion}</div>
                 <h4 className="card-title">Titulo del plan: {titulo}</h4>
@@ -59,7 +60,7 @@ const PostItem = ({
               <div className="row">
                 <div className="col-md-8">
                   <p className='post-date'>
-                    Publicado el <span className="span"> <Moment format='YYYY/MM/DD'>{date}</Moment></span>
+                    Publicado el <span className="span"> <Moment format='MMM Do YYYY'>{date}</Moment></span>
                   </p>
                 </div>
                 <div className="col-md-4">
@@ -133,7 +134,25 @@ const PostItem = ({
                       <img className='round-img imgTable' src={avatar} alt='' />
                     </Link>
                   </div> */}
-                  <div className="col-md-12" style={{ marginLeft: "70%" }}>
+
+                  <div className="col-md-8" >
+                    {
+                      calor
+                        ? calor
+                          ? <><img src={frioimg} style={{ marginLeft: "15px", marginTop: "3px" }} /></>
+                          : ""
+                        : ""
+
+                    }{
+                      frio
+                        ? frio
+                          ? <><img src={frioimg} style={{ marginLeft: "15px", marginTop: "3px" }} /></>
+                          : ""
+                        : ""
+
+                    }
+                  </div>
+                  <div className="col-md-4" >
                     <Link to={`/profile/${user}`}>
                       <h4 style={{ fontSize: "17px" }}>by {name}</h4>
                     </Link>

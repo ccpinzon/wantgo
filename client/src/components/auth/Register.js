@@ -31,7 +31,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/posts" />;
   }
 
   return (
@@ -39,7 +39,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       <div className="container">
         <div className="row">
           <div className="col-md-4" style={{ textAlign: "center" }}>
-            <br /> <br />
             <div className="card card-body" style={{ borderStyle: "none" }}>
               <h1 className="">Registrate</h1>
               <form className="form-group" onSubmit={e => onSubmit(e)} >
@@ -131,7 +130,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                       <button id="show_password" className="btn btn-primary" type="button" ><span className="fa fa-eye-slash icon"></span> </button>
                     </div>
                   </div>
-                </div> <br />
+                </div>
                 <label style={{ fontSize: "10px", color: "gray" }}>
                   Al hacer click en "Registrarte" aceptas nuestras condiciones la politica de datos y la politica de cookies.
                   Es posible que te enviemos notificaciones por SMS, que puedes desactivar cuando quieras.

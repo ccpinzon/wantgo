@@ -40,7 +40,7 @@ const Dashboard = ({
           </Fragment>
         ) : (
             <Fragment>
-              <p>No tienes información empresarial, Por favor agrega información</p>
+              <p>Para poder visualizar tus planes tirusiticos debes crear tu perfil empresarial!</p>
               <Link to="/create-profile" className="btn btn-primary my-1">
                 Crear empresa
           </Link>

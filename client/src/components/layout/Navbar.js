@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
-const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
   const authLinks = (
     <div className="col-md-3" >
 
@@ -21,6 +21,9 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
         <Link className="nav-link btnres" to="#!" onClick={logout}>
           Salir
                 </Link>
+        <p>
+          {user.name}
+        </p>
       </div>
     </div>
   );

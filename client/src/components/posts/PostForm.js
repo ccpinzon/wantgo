@@ -34,7 +34,9 @@ const PostForm = ({ addPost, history }) => {
     bicicleta: "",
     moneda: "",
     servicios: "",
-    categoria: ""
+    categoria: "",
+    frio: "",
+    calor: ""
 
   });
   const formData = new FormData()
@@ -56,6 +58,8 @@ const PostForm = ({ addPost, history }) => {
     formData.append('chiba', datos_Form.chiba)
     formData.append('cuatrimoto', datos_Form.cuatrimoto)
     formData.append('bicicleta', datos_Form.bicicleta)
+    formData.append('calor', datos_Form.calor)
+    formData.append('frio', datos_Form.frio)
     formData.append('moneda', datos_Form.moneda)
   }
   console.log(formData, "aca los datos")
@@ -76,14 +80,15 @@ const PostForm = ({ addPost, history }) => {
           e.preventDefault();
           convertirDatosFormaData()
           onDrop();
-          addPost(formData, history.push('/posts'));
+          addPost(formData, history.push('/dashboard'));
         }}>
         <div className="row">
           <div className="col-md-4">
             <div className="card card-body">
               <div className="">
-                <label htmlFor="">Ubicación</label>
+                <label htmlFor="" style={{}}>Ubicación</label>
                 <input
+                  style={{ color: "rgb(18, 144, 162, 1)", fontFamily: "Indie Flower, cursive" }}
                   type="text"
                   className="form-control"
                   name="ubicacion"
@@ -94,8 +99,9 @@ const PostForm = ({ addPost, history }) => {
               </div>
 
               <div className="">
-                <label htmlFor="">Titulo de la Descripción</label>
+                <label htmlFor="">Titulo del plan</label>
                 <input
+                  style={{ color: "rgb(18, 144, 162, 1)", fontFamily: "Indie Flower, cursive" }}
                   type="text"
                   className="form-control"
                   name="titulo"
@@ -105,8 +111,10 @@ const PostForm = ({ addPost, history }) => {
                 />
               </div>
               <div className="">
-                <label htmlFor="">Categoría</label>
+                <label htmlFor="">Categoría turismo</label>
                 <input
+                  placeholder="eje:Turismo aventura"
+                  style={{ color: "rgb(18, 144, 162, 1)", fontFamily: "Indie Flower, cursive" }}
                   type="text"
                   className="form-control"
                   name="categoria"
@@ -128,7 +136,7 @@ const PostForm = ({ addPost, history }) => {
                           type="checkbox"
                           name="carro"
                           onChange={onChange}
-                          value="carro" />
+                          value="Carro" />
                         <label className="form-check-label">Carro</label>
                       </div>
                       <div className="form-check form-check-inline">
@@ -212,19 +220,20 @@ const PostForm = ({ addPost, history }) => {
               <div className="">
                 <label htmlFor="" style={{ color: "rgb(18, 144, 162, 1)" }}>Frase Principal</label>
                 <textarea
+                  style={{ color: "rgb(18, 144, 162, 1)", fontFamily: "Indie Flower, cursive" }}
                   type="text"
                   className="form-control"
                   name="frase"
                   value={datos_Form.frase}
                   onChange={onChange}
                   required
-                  placeholder="maximo 40 caracteres"
                 ></textarea>
               </div> <br />
 
               <div className="" style={{ display: "flex" }}>
-                <label> Precio por persona</label>
+                <label>Valor/persona </label>
                 <input
+                  style={{ color: "rgb(18, 144, 162, 1)", fontFamily: "Indie Flower, cursive", marginLeft: "5px" }}
                   type="number"
                   className="form-control"
                   name="valor"
@@ -244,6 +253,7 @@ const PostForm = ({ addPost, history }) => {
             </div>
           </div>
           <div className="col-md-8">
+            <span>Publica un maximo de 8 imagenes</span>
             <ImageUploader
               required
               withPreview={true}
@@ -256,6 +266,7 @@ const PostForm = ({ addPost, history }) => {
             <div className="">
               <label htmlFor="" className="btnmi">Descripción</label>
               <textarea
+                style={{ color: "rgb(18, 144, 162, 1)", fontFamily: "Indie Flower, cursive" }}
                 type="text"
                 className="form-control"
                 name="text"
@@ -269,6 +280,7 @@ const PostForm = ({ addPost, history }) => {
             <div className="">
               <label className="btnmi">Servicios ofrecidos</label>
               <textarea
+                style={{ color: "rgb(18, 144, 162, 1)", fontFamily: "Indie Flower, cursive" }}
                 type="text"
                 className="form-control"
                 name="servicios"
@@ -281,9 +293,50 @@ const PostForm = ({ addPost, history }) => {
           </div>
         </div>
         <br />
-        <button type="submit" className="btnmi ">
-          guardar
+        <button className="btnmi ">
+          Recomendaciones de viaje
+              </button> <br /> <br />
+        <div className="container">
+          <div className="row">
+            <br />
+            <div className="col-md-2"></div>
+            <br />
+            <div className="col-md-4" style={{ textAlign: "center" }}>
+              <div className="form-check form-check-inline">
+                <input className="form-check-input"
+                  type="checkbox" id="inlineCheckbox2"
+                  name="calor"
+                  onChange={onChange}
+                  value="calor"
+                />
+                <img src="frio.jpeg" alt="" /> <br />
+
+              </div>
+              <p>calor</p>
+            </div>
+            <br />
+            <div className="col-md-4" style={{ textAlign: "center" }}>
+              <div className="form-check form-check-inline">
+                <input className="form-check-input"
+                  type="checkbox" id="inlineCheckbox2"
+                  name="frio"
+                  onChange={onChange}
+                  value="frio"
+                />
+                <img src="frio.jpeg" alt="" /> <br />
+
+              </div>
+              <p>frio</p>
+            </div>
+          </div>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <hr />
+          <h3>El administrador revisara la aplicacion y la cargara en la App</h3>
+          <button type="submit" className="btn btn-danger" >
+            Enviar plan turistico
               </button>
+        </div>
       </form>
 
       <br />

@@ -68,6 +68,12 @@ const PostSchema = new Schema({
   moneda: {
     type: String
   },
+  calor: {
+    type: String
+  },
+  frio: {
+    type: String
+  },
   images: [{
     filename: { type: String },
     path: { type: String },

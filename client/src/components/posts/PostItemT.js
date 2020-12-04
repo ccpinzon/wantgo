@@ -32,58 +32,60 @@ const PostItemT = ({
   showActions
 }) => (
 
-    <div className="col-md-3">
+    <>
       {
         likes
           ? likes.length == 1
-            ? <div className="card" style={{ height: "330px", marginTop: "12px" }}>
-              <div className="card-title">
-                <Carousel
-                  swipeable={false}
-                  draggable={false}
-                  showDots={true}
-                  responsive={responsive}
-                  ssr={true} // means to render carousel on server-side.
-                  infinite={true}
-                  autoPlaySpeed={1000}
-                  keyBoardControl={true}
-                  customTransition="all .5"
-                  transitionDuration={500}
-                  containerClass="carousel-container"
-                  removeArrowOnDeviceType={["tablet", "mobile"]}
-                  dotListClass="custom-dot-list-style"
-                  itemClass="carousel-item-padding-40-px"
-                >
-                  {images.map(images => (
-                    <div key={images._id} className="imagenespostt">
-                      <img src={images.path} alt="..." className="imagendentrot" />
-                    </div>
-                  ))}
-                </Carousel>
-              </div>
-              <div className="card-block" style={{ height: "190px" }}>
-                <Link to={`/posts/${_id}`} style={{ fontSize: "12px" }}>
-                  <h4 className="card-title">{titulo}</h4>
-                </Link>
+            ? <div className="col-md-3">
+              <div className="card" style={{ height: "330px", marginTop: "12px" }}>
+                <div className="card-title">
+                  <Carousel
+                    swipeable={false}
+                    draggable={false}
+                    showDots={true}
+                    responsive={responsive}
+                    ssr={true} // means to render carousel on server-side.
+                    infinite={true}
+                    autoPlaySpeed={1000}
+                    keyBoardControl={true}
+                    customTransition="all .5"
+                    transitionDuration={500}
+                    containerClass="carousel-container"
+                    removeArrowOnDeviceType={["tablet", "mobile"]}
+                    dotListClass="custom-dot-list-style"
+                    itemClass="carousel-item-padding-40-px"
+                  >
+                    {images.map(images => (
+                      <div key={images._id} className="imagenespostt">
+                        <img src={images.path} alt="..." className="imagendentrot" />
+                      </div>
+                    ))}
+                  </Carousel>
+                </div>
+                <div className="card-block" style={{ height: "190px" }}>
+                  <Link to={`/posts/${_id}`} style={{ fontSize: "12px" }}>
+                    <h6 className="card-title">{titulo} <i></i> </h6>
+                  </Link>
 
-                <div className="meta">
-                  <p>{categoria}</p>
+                  <div className="">
+                    <h6> Categoría: {categoria}</h6>
+                  </div>
+                  <div className="card-text">
+                    <h6>Frase principal: <span style={{ color: "gray" }}>{frase}...</span></h6>
+                  </div>
                 </div>
-                <div className="card-text">
-                  {frase}
+                <div className="card-footer">
+                  <span className="float-right"><span className="span"> <Moment format='MMM Do YYYY'>{date}</Moment></span></span>
+                  <span><i className=""></i>{ubicacion}</span>
                 </div>
-              </div>
-              <div className="card-footer">
-                <span className="float-right"><span className="span"> <Moment format='YYYY/MM/DD'>{date}</Moment></span></span>
-                <span><i className=""></i>{ubicacion}</span>
               </div>
             </div>
             : ""
           : ""
 
       }
+    </>
 
-    </div>
   );
 
 PostItemT.defaultProps = {

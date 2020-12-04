@@ -12,7 +12,7 @@ const Posts = ({ getPosts, post: { posts } }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Planes turisticos</h1>
+      <h3 className=" text-primary">Planes turisticos de otros operadores</h3>
 
       <div className="row">
         {posts.map((post) => (

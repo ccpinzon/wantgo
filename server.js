@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
     cb(null, uuid() + path.extname(file.originalname));
   }
 })
-app.use(multer({ storage }).array('images', 3));
+app.use(multer({ storage }).array('images', 12));
 //fin multer
 
 // Define Routes

@@ -35,15 +35,15 @@ const Login = ({ login, isAuthenticated }) => {
           <div className="col-md-1 formulario"></div>
           <div className="col-md-6 " >
             <div
-              className=" m-5 animated bounceInRight delay-1s "
+              className="  animated bounceInRight  "
               style={{ width: "80%" }}
 
             >
               <div className="card-body">
                 <div className="card-title" style={{ textAlign: "center" }}>
                   <h1 className="tituloB">Bienvenido</h1>
-                  <h3>Inicia sesión y carga  tú experiencia turística</h3>
-                  <br /> <br /> <b></b>
+                  <h3>Inicia sesión y carga  tú plan turístico</h3>
+                  <br />  <b></b>
                 </div>
 
                 <form onSubmit={e => onSubmit(e)}>
@@ -58,7 +58,7 @@ const Login = ({ login, isAuthenticated }) => {
                       required
                     />
                   </div>
-                  <br />
+
                   <div className="form-group ">
                     <input
                       type="password"

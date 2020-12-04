@@ -44,6 +44,8 @@ router.post(
         servicios: req.body.servicios,
         categoria: req.body.categoria,
         moneda: req.body.moneda,
+        calor: req.body.calor,
+        frio: req.body.frio,
         user: req.user.id
 
       });

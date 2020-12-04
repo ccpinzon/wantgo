@@ -23,6 +23,7 @@ const TablePost = ({ getPostsMe, post: { posts } }) => {
                         <th style={{ width: "100px", textAlign: "center" }} >Titulo</th>
                         <th style={{ width: "120px", textAlign: "center" }} >Valor</th>
                         <th style={{ textAlign: "center" }}>Descripción</th>
+                        <th style={{ textAlign: "center" }}>Estado</th>
                         <th />
                     </tr>
                 </thead>

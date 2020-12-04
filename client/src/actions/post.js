@@ -92,7 +92,7 @@ export const addPost = formData => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('publicacion creada', 'success'));
+    dispatch(setAlert('Tu plan ha sido enviado a revision si despues de 24 horas no ha sido publicado revisa nuestra politica de datos', 'success'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,

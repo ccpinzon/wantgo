@@ -14,6 +14,7 @@ import Post from '../post/Post';
 import NotFound from '../layout/NotFound';
 import PrivateRoute from '../routing/PrivateRoute';
 import PostForm from '../posts/PostForm';
+import TablePostAdmin from '../dashboard/TablePostAdmin';
 
 const Routes = props => {
   return (
@@ -30,6 +31,7 @@ const Routes = props => {
         <PrivateRoute exact path="/add-experience" component={AddExperience} />
         <PrivateRoute exact path="/add-education" component={AddEducation} />
         <PrivateRoute exact path="/posts" component={Posts} />
+        <PrivateRoute exact path="/admin" component={TablePostAdmin} />
         <PrivateRoute exact path="/add-posts" component={PostForm} />
         <PrivateRoute exact path="/posts/:id" component={Post} />
         <Route component={NotFound} />

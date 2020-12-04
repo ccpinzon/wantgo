@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
-import { deletePost } from '../../actions/post';
+import { deletePost, removeLike, addLike } from '../../actions/post';
 
 const PostItemMe = ({
+  addLike,
+  removeLike,
   deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date, titulo, categoria, frase, valor, ubicacion, fecha }
+  post: { _id, text, name, avatar, user, likes, comments, date, titulo, categoria, frase, valor, ubicacion, fecha },
+  showActions
 }) => (
 
     <tr>
@@ -47,6 +50,24 @@ const PostItemMe = ({
       <td>
         <p style={{ fontSize: "10px" }} >{text}</p>
       </td>
+      <td style={{ fontSize: "10px" }}>
+        {showActions && (
+          <Fragment>
+            <div className="row">
+              <div className="col-md-6">
+
+                {likes
+                  ? likes.length > 0
+                    ? <span>Aprobado</span>
+                    : "En revisión"
+                  : "cancelado"}
+
+              </div>
+
+            </div>
+          </Fragment>
+        )}
+      </td>
     </tr>
 
 
@@ -59,7 +80,8 @@ PostItemMe.defaultProps = {
 PostItemMe.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-
+  addLike: PropTypes.func.isRequired,
+  removeLike: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
   showActions: PropTypes.bool
 };
@@ -70,5 +92,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deletePost }
+  { addLike, removeLike, deletePost }
 )(PostItemMe);
