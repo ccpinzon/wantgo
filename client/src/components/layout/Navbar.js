@@ -7,24 +7,32 @@ import { logout } from '../../actions/auth';
 const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
   const authLinks = (
     <div className="col-md-3" >
+      {
+        user && user.email === "juand13@gmail.com" ?
+          <div className="collapse navbar-collapse" id="navbarNav" style={{ textAlign: "center", width: "100%" }}>
+            <Link className="nav-link " to="/juand13/admin/wantgo" >
+              Administrador
+                </Link>
+            <Link className="nav-link btnres" to="#!" onClick={logout}>
+              Salir
+                </Link>
+          </div>
+          : <div className="collapse navbar-collapse" id="navbarNav" style={{ textAlign: "center", width: "100%" }}>
+            <Link className="nav-link " to="/posts" >
+              Planes turisticos
+                </Link>
+            <Link className="nav-link " to="/dashboard" >
+              Mi perfil
+                </Link>
+            <Link className="nav-link " to="/add-posts" >
+              Crear plan
+                </Link>
+            <Link className="nav-link btnres" to="#!" onClick={logout}>
+              Salir
+                </Link>
+          </div>
+      }
 
-      <div className="collapse navbar-collapse" id="navbarNav" style={{ textAlign: "center", width: "100%" }}>
-        <Link className="nav-link " to="/posts" >
-          Planes turisticos
-                </Link>
-        <Link className="nav-link " to="/dashboard" >
-          Mi perfil
-                </Link>
-        <Link className="nav-link " to="/add-posts" >
-          Crear plan
-                </Link>
-        <Link className="nav-link btnres" to="#!" onClick={logout}>
-          Salir
-                </Link>
-        <p>
-          {user.name}
-        </p>
-      </div>
     </div>
   );
 
