@@ -32,140 +32,118 @@ const PostItem = ({
   post: { _id, text, name, avatar, user, likes, comments, date, titulo, categoria, ubicacion, servicios, tipo, frase, avion, visible, lancha, caminata, chiba, cuatrimoto, bicicleta, valor, images, carro, moto, caballo, moneda, frio, calor },
   showActions
 }) => (
-    <>
-      <div className="container py-3">
-        <div className="card">
-          <div className="row ">
-            <div className="col-md-7 ">
-              <div className="card-block px-6">
-                <div className="title h1 " style={{ color: "#00bfbf" }}>{ubicacion}</div>
-                <h4 className="card-title">Titulo del plan: {titulo}</h4>
-                <p className="card-text" style={{ fontSize: "12px" }}>
-                  {text}
-                </p>
-                <div className="row">
-                  <div className="col-md-12">
-                    <label ><span style={{ color: "black" }}> <span style={{ color: "#01579b" }}>Servicios ofrecidos:</span> </span> <span className="span">{servicios}</span> </label> <br />
-                    <label style={{ color: "#01579b" }}>categoría: <span className="span">{categoria}</span>  </label> <br />
-                    <label > <span style={{ color: "#01579b" }}>Tipo de transporte: </span><span className="span">{carro} {caballo} {moto} {chiba} {avion} {lancha} {caminata} {cuatrimoto} {bicicleta} </span></label>
-                  </div>
-                  <div className="col-md-12">
-                    <label > <span style={{ color: "#01579b" }}>Frase:</span> <span className="span">{frase}</span></label>
-                  </div>
+  <>
+    <div className="container py-3">
+      <div className="card">
+        <div className="row ">
+          <div className="col-md-7 ">
+            <div className="card-block px-6">
+              <div className="title h1 " style={{ color: "#00bfbf" }}>{ubicacion}</div>
+              <h4 className="card-title">Titulo del plan: {titulo}</h4>
+              <p className="card-text" style={{ fontSize: "12px" }}>
+                {text}
+              </p>
+              <div className="row">
+                <div className="col-md-12">
+                  <label ><span style={{ color: "black" }}> <span style={{ color: "#01579b" }}>Servicios ofrecidos:</span> </span> <span className="span">{servicios}</span> </label> <br />
+                  <label style={{ color: "#01579b" }}>categoría: <span className="span">{categoria}</span>  </label> <br />
+                  <label > <span style={{ color: "#01579b" }}>Tipo de transporte: </span><span className="span">{carro} {caballo} {moto} {chiba} {avion} {lancha} {caminata} {cuatrimoto} {bicicleta} </span></label>
+                </div>
+                <div className="col-md-12">
+                  <label > <span style={{ color: "#01579b" }}>Frase:</span> <span className="span">{frase}</span></label> <br />
+                  <label > <span style={{ color: "#01579b" }}>Recomendaciones:</span> <span className="span">{frio}</span></label>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="col-md-5">
-              <div className="row">
-                <div className="col-md-8">
-                  <p className='post-date'>
-                    Publicado el <span className="span"> <Moment format='MMM Do YYYY'>{date}</Moment></span>
-                  </p>
-                </div>
-                <div className="col-md-4">
-                  <label > Valor: <span style={{ color: "red" }} >${valor} {moneda}</span></label>
-                </div>
+          <div className="col-md-5">
+            <div className="row">
+              <div className="col-md-8">
+                <p className='post-date'>
+                  Publicado el <span className="span"> <Moment format='MMM Do YYYY'>{date}</Moment></span>
+                </p>
               </div>
-
-
-              <div id="CarouselTest" className="carousel slide" data-ride="carousel">
-                <Carousel
-                  swipeable={false}
-                  draggable={false}
-                  showDots={true}
-                  responsive={responsive}
-                  ssr={true} // means to render carousel on server-side.
-                  infinite={true}
-                  autoPlaySpeed={1000}
-                  keyBoardControl={true}
-                  customTransition="all .5"
-                  transitionDuration={500}
-                  containerClass="carousel-container"
-                  removeArrowOnDeviceType={["tablet", "mobile"]}
-                  dotListClass="custom-dot-list-style"
-                  itemClass="carousel-item-padding-40-px"
-                >
-                  {images.map(images => (
-                    <div key={images._id} className="imagenespost">
-                      <img src={images.path} alt="..." className="imagendentro" />
-                    </div>
-                  ))}
-                </Carousel>
+              <div className="col-md-4">
+                <label > Valor: <span style={{ color: "red" }} >${valor} {moneda}</span></label>
               </div>
-              <div className="row">
-                <div className="col-md-6">
-                  {showActions && (
-                    <Fragment>
-                      <button
-                        onClick={() => addLike(_id)}
-                        type='button'
-                        className='btn btn-light'
-                      >
-                        <i className='fas fa-thumbs-up' />{' '}
-                        <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-                      </button>
-                      <button
-                        onClick={() => removeLike(_id)}
-                        type='button'
-                        className='btn btn-light'
-                      >
-                        <i className='fas fa-thumbs-down' />
-                      </button>
-                      <Link to={`/posts/${_id}`} className='btn btn-primary' style={{ fontSize: "12px" }}>
+            </div>
 
-                        <i className='fa fa-eye' />
-                      </Link>
-                      {!auth.loading && user === auth.user._id && (
-                        <button
-                          onClick={() => deletePost(_id)}
-                          type='button'
-                          className='btn btn-danger'
-                        >
-                          <i className='fas fa-times' />
-                        </button>
-                      )}
-                    </Fragment>
-                  )}
-                </div>
-                <div className="row">
-                  {/* <div className="col-md-4">
-                    <Link to={`/profile/${user}`}>
-                      <img className='round-img imgTable' src={avatar} alt='' />
-                    </Link>
-                  </div> */}
 
-                  <div className="col-md-8" >
-                    {
-                      calor
-                        ? calor
-                          ? <><img src={frioimg} style={{ marginLeft: "15px", marginTop: "3px" }} /></>
-                          : ""
-                        : ""
-
-                    }{
-                      frio
-                        ? frio
-                          ? <><img src={frioimg} style={{ marginLeft: "15px", marginTop: "3px" }} /></>
-                          : ""
-                        : ""
-
-                    }
+            <div id="CarouselTest" className="carousel slide" data-ride="carousel">
+              <Carousel
+                swipeable={false}
+                draggable={false}
+                showDots={true}
+                responsive={responsive}
+                ssr={true} // means to render carousel on server-side.
+                infinite={true}
+                autoPlaySpeed={1000}
+                keyBoardControl={true}
+                customTransition="all .5"
+                transitionDuration={500}
+                containerClass="carousel-container"
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+                dotListClass="custom-dot-list-style"
+                itemClass="carousel-item-padding-40-px"
+              >
+                {images.map(images => (
+                  <div key={images._id} className="imagenespost">
+                    <img src={images.path} alt="..." className="imagendentro" />
                   </div>
-                  <div className="col-md-4" >
-                    <Link to={`/profile/${user}`}>
-                      <h4 style={{ fontSize: "17px" }}>by {name}</h4>
+                ))}
+              </Carousel>
+            </div>
+            <div className="row">
+              <div className="col-md-6">
+                {showActions && (
+                  <Fragment>
+                    <button
+                      onClick={() => addLike(_id)}
+                      type='button'
+                      className='btn btn-light'
+                    >
+                      <i className='fas fa-thumbs-up' />{' '}
+                      <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+                    </button>
+                    <button
+                      onClick={() => removeLike(_id)}
+                      type='button'
+                      className='btn btn-light'
+                    >
+                      <i className='fas fa-thumbs-down' />
+                    </button>
+                    <Link to={`/posts/${_id}`} className='btn btn-primary' style={{ fontSize: "12px" }}>
+
+                      <i className='fa fa-eye' />
                     </Link>
-                  </div>
+                    {!auth.loading && user === auth.user._id && (
+                      <button
+                        onClick={() => deletePost(_id)}
+                        type='button'
+                        className='btn btn-danger'
+                      >
+                        <i className='fas fa-times' />
+                      </button>
+                    )}
+                  </Fragment>
+                )}
+              </div>
+              <div>
+                <div >
+                  <Link to={`/profile/${user}`}>
+                    <h4 style={{ fontSize: "17px" }}>by {name}</h4>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-    </>
-  );
+  </>
+);
 
 PostItem.defaultProps = {
   showActions: true

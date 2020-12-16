@@ -99,37 +99,26 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                 </div>
 
                 <div className="mb-1">
-
-                  <div className="input-group">
-                    <input id="txtPassword"
-                      type="password"
-                      className="form-control"
-                      placeholder="Contraseña"
-                      name="password"
-                      value={password}
-                      onChange={e => onChange(e)}
-                      required
-                    />
-                    <div className="input-group-append">
-                      <button id="show_password" className=" btn btn-primary" type="button" > <span className="fa fa-eye-slash icon"></span> </button>
-                    </div>
-                  </div>
+                  <input id="txtPassword"
+                    type="password"
+                    className="form-control"
+                    placeholder="Contraseña"
+                    name="password"
+                    value={password}
+                    onChange={e => onChange(e)}
+                    required
+                  />
                 </div>
                 <div className="mb-1 ">
-                  <div className="input-group">
-                    <input
-                      type="password"
-                      className="form-control"
-                      placeholder="Confirmar contraseña"
-                      name="password2"
-                      value={password2}
-                      onChange={e => onChange(e)}
-                      required
-                    />
-                    <div className="input-group-append">
-                      <button id="show_password" className="btn btn-primary" type="button" ><span className="fa fa-eye-slash icon"></span> </button>
-                    </div>
-                  </div>
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Confirmar contraseña"
+                    name="password2"
+                    value={password2}
+                    onChange={e => onChange(e)}
+                    required
+                  />
                 </div>
                 <label style={{ fontSize: "10px", color: "gray" }}>
                   Al hacer click en "Registrarte" aceptas nuestras condiciones la politica de datos y la politica de cookies.

@@ -2,13 +2,15 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getPosts } from '../../actions/post';
+import { getProfiles } from '../../actions/profile';
 import PostItemAdmin from '../posts/PostItemAdmin';
 
 
-const TablePostAdmin = ({ getPosts, post: { posts } }) => {
+const TablePostAdmin = ({ getPosts, post: { posts }, getProfiles, profile: { profiles } }) => {
     useEffect(() => {
         getPosts();
-    }, [getPosts]);
+        getProfiles();
+    }, [getPosts, getProfiles]);
 
     return (
         <Fragment>
@@ -22,7 +24,7 @@ const TablePostAdmin = ({ getPosts, post: { posts } }) => {
                     </div>
                     <div className="col-md-1"></div>
                     <div className="col-md-3" style={{ textAlign: "center", borderRadius: "10px", borderStyle: "solid", borderWidth: "1px", borderColor: "#50D844", background: "#50D844 " }}>
-                        <div style={{ color: "white" }}> <h1>{posts.length}</h1> </div>
+                        <div style={{ color: "white" }}> <h1>{profiles.length}</h1> </div>
                         <div style={{ background: "white" }}><p style={{ color: "#50D844" }}>N. de empresas</p></div>
                     </div>
                     <div className="col-md-1"></div>
@@ -58,12 +60,14 @@ const TablePostAdmin = ({ getPosts, post: { posts } }) => {
 
 TablePostAdmin.propTypes = {
     getPosts: PropTypes.func.isRequired,
-    post: PropTypes.object.isRequired
+    post: PropTypes.object.isRequired,
+    profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-    post: state.post
+    post: state.post,
+    profile: state.profile
 
 });
 
-export default connect(mapStateToProps, { getPosts })(TablePostAdmin);
+export default connect(mapStateToProps, { getPosts, getProfiles })(TablePostAdmin);

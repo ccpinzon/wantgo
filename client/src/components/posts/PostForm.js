@@ -241,7 +241,7 @@ const PostForm = ({ addPost, history }) => {
                   onChange={onChange}
                   required
                 />
-                <select class="custom-select mr-sm-2" name="moneda" onChange={onchange} value={datos_Form.moneda}>
+                <select class="custom-select mr-sm-2" name="moneda" onChange={onChange} value={datos_Form.moneda}>
                   <option selected>$</option>
                   <option value="COP">COP</option>
                   <option value="USD">USD</option>
@@ -290,46 +290,24 @@ const PostForm = ({ addPost, history }) => {
                 placeholder="maximo 300 caracteres"
               ></textarea>
             </div>
+            <br /> <br />
+            <div className="">
+              <label className="btnmi"> Recomendaciones de viaje</label>
+              <textarea
+                style={{ color: "rgb(18, 144, 162, 1)", fontFamily: "Indie Flower, cursive" }}
+                type="text"
+                className="form-control"
+                name="frio"
+                value={datos_Form.frio}
+                onChange={onChange}
+                required
+                placeholder="maximo 300 caracteres"
+              ></textarea>
+            </div>
           </div>
         </div>
         <br />
-        <button className="btnmi ">
-          Recomendaciones de viaje
-              </button> <br /> <br />
-        <div className="container">
-          <div className="row">
-            <br />
-            <div className="col-md-2"></div>
-            <br />
-            <div className="col-md-4" style={{ textAlign: "center" }}>
-              <div className="form-check form-check-inline">
-                <input className="form-check-input"
-                  type="checkbox" id="inlineCheckbox2"
-                  name="calor"
-                  onChange={onChange}
-                  value="calor"
-                />
-                <img src="frio.jpeg" alt="" /> <br />
 
-              </div>
-              <p>calor</p>
-            </div>
-            <br />
-            <div className="col-md-4" style={{ textAlign: "center" }}>
-              <div className="form-check form-check-inline">
-                <input className="form-check-input"
-                  type="checkbox" id="inlineCheckbox2"
-                  name="frio"
-                  onChange={onChange}
-                  value="frio"
-                />
-                <img src="frio.jpeg" alt="" /> <br />
-
-              </div>
-              <p>frio</p>
-            </div>
-          </div>
-        </div>
         <div style={{ textAlign: "center" }}>
           <hr />
           <h3>El administrador revisara la aplicacion y la cargara en la App</h3>
