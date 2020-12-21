@@ -4,30 +4,39 @@ import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
+import ReactFlagsSelect from 'react-flags-select';
 
+//import css module
+import 'react-flags-select/css/react-flags-select.css';
+import { selectFields } from 'express-validator/src/select-fields';
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     telefono: '',
     documento: '',
-    pais: '',
+
     password: '',
     password2: ''
   });
 
-  const { name, email, telefono, documento, password, pais, password2 } = formData;
-
+  const { name, email, telefono, documento, password, password2 } = formData;
+  const [pais, setPais] = useState("");
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
+  const onSelectFlag = (countries) => {
+    setPais(countries)
+    console.log(countries)
+  }
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
       setAlert('Contraseñas no coinciden', 'danger');
     } else {
+      onSelectFlag()
       register({ name, email, telefono, documento, password, pais });
     }
+    console.log(register.pais)
   };
 
   if (isAuthenticated) {
@@ -54,15 +63,13 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                   />
                 </div>
                 <div className="mb-1 ">
-                  <input
-                    type="text"
+                  <ReactFlagsSelect
                     className="form-control"
-                    placeholder="País"
-                    name="pais"
-                    value={pais}
-                    onChange={e => onChange(e)}
-                    required
-                  />
+                    searchable={true}
+                    placeholder="Selecciona pais"
+                    onSelect={onSelectFlag}
+                    required />
+
                 </div>
                 <div className="mb-1 ">
                   <input
