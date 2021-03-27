@@ -37,10 +37,10 @@ router.post(
     }
 
     const { email, password } = req.body;
-
+    console.log(password, "'aca el password enciado por el usuario")
     try {
       let user = await User.findOne({ email });
-
+      console.log(user)
       if (!user) {
         return res
           .status(400)
@@ -48,7 +48,7 @@ router.post(
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
-
+      console.log(isMatch, " acael pass desc")
       if (!isMatch) {
         return res
           .status(400)

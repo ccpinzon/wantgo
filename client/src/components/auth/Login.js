@@ -82,7 +82,7 @@ const Login = ({ login, isAuthenticated }) => {
                     <label className="form-check-label" >
                       Recuerdame
                     </label> <br />
-                    <a href="">Olvidaste tu contraseña</a>
+                    <Link to="mail-recovery">Olvidaste tu contraseña</Link>
                   </div>
                 </form>
 

@@ -15,7 +15,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     email: '',
     telefono: '',
     documento: '',
-
     password: '',
     password2: ''
   });

@@ -15,6 +15,8 @@ import NotFound from '../layout/NotFound';
 import PrivateRoute from '../routing/PrivateRoute';
 import PostForm from '../posts/PostForm';
 import TablePostAdmin from '../dashboard/TablePostAdmin';
+import Recovery from '../auth/Recovery';
+import MailRecovery from '../auth/MailRecovery';
 
 const Routes = props => {
   return (
@@ -25,6 +27,8 @@ const Routes = props => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/profiles" component={Profiles} />
         <Route exact path="/profile/:id" component={Profile} />
+        <Route exact path="/mail-recovery" component={MailRecovery} />
+        <Route exact path="/updatePass/:token" component={Recovery} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/create-profile" component={ProfileForm} />
         <PrivateRoute exact path="/edit-profile" component={ProfileForm} />

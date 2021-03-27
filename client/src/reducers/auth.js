@@ -6,7 +6,8 @@ import {
   LOGIN_SUCCESS,
   //LOGIN_FAIL,
   LOGOUT,
-  ACCOUNT_DELETED
+  ACCOUNT_DELETED,
+  UPDATE_PASS
 } from '../actions/types';
 
 const initialState = {
@@ -28,6 +29,13 @@ export default function (state = initialState, action) {
         user: payload
       };
     case REGISTER_SUCCESS:
+      return {
+        ...state,
+        ...payload,
+        isAuthenticated: true,
+        loading: false
+      };
+    case UPDATE_PASS:
       return {
         ...state,
         ...payload,

@@ -26,7 +26,7 @@ const ProfileItem = ({
       </div>
 
       <ul>
-        <li><h3>Intereses</h3></li>
+        <li><h3>RNT/Identificacion turistica</h3></li>
         {skills.slice(0, 4).map((skill, index) => (
 
           <li key={index} className='text-primary'>

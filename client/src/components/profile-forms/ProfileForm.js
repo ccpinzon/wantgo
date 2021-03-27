@@ -79,11 +79,13 @@ const ProfileForm = ({
         <div className="form-group">
           <select name="status" value={status} onChange={onChange}>
             <option>* Selecciona tu rol empresarial</option>
-            <option value="Gerente">Gerente</option>
-            <option value="Asesor turistico">Asesor turistico</option>
+            <option value="Operador turistico">Operador turistico</option>
             <option value="Guia turistico">Guia turistico</option>
-            <option value="Manager">Manager</option>
-            <option value="Estiduante">Estudiante</option>
+            <option value="Agencia de viaje">Agencia de viaje</option>
+            <option value="Agencia operadora">Agencia operadora</option>
+            <option value="Agencia mayorista">Agencia mayorista</option>
+            <option value="Parque tematico ">Parque tematico </option>
+            <option value="Arrendador de vehiculo turistico ">Arrendador de vehiculo turistico  </option>
             <option value="Otros">Otros</option>
           </select>
           <small className="form-text">
@@ -125,14 +127,12 @@ const ProfileForm = ({
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Intereses"
+            placeholder="* RNT/Identificacion turistica"
             name="skills"
             value={skills}
             onChange={onChange}
           />
-          <small className="form-text">
-            Por favor separe por comas(diversion,agua)
-          </small>
+
         </div>
         <div className="form-group">
           <input

@@ -7,7 +7,11 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT
+  LOGOUT,
+  UPDATE_PASS_FAILR,
+  UPDATE_PASS_FAIL,
+  UPDATE_PASSR,
+  UPDATE_PASS
 } from './types';
 
 // Load User
@@ -71,6 +75,53 @@ export const login = (email, password) => async dispatch => {
 
     dispatch({
       type: LOGIN_FAIL
+    });
+  }
+};
+// enviar email 
+export const mailRecovery = (email) => async dispatch => {
+  console.log(email, "comprobandosi entra en la funcion")
+  const body = { email };
+  console.log(body, "aca el body")
+  try {
+    const res = await api.post('/users/recoverPass', body);
+
+    dispatch({
+      type: UPDATE_PASS,
+      payload: res.data
+    });
+
+    dispatch(loadUser());
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: UPDATE_PASS_FAIL
+    });
+  }
+};
+// recuperar contra
+export const recovery = (email, password) => async dispatch => {
+  const body = { email, password };
+  //console.log(email, password, "aca los datos en la funcion")
+  try {
+    const res = await api.put('/users/pass', body);
+    dispatch({
+      type: UPDATE_PASSR,
+      payload: res.data
+    });
+    dispatch(loadUser());
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+    dispatch({
+      type: UPDATE_PASS_FAILR
     });
   }
 };

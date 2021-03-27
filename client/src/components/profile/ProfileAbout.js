@@ -8,24 +8,24 @@ const ProfileAbout = ({
     user: { name }
   }
 }) => (
-    <div className='profile-about bg-light p-2'>
-      {bio && (
-        <Fragment>
-          <h2 className='text-primary'> Biografía</h2>
-          <p>{bio}</p>
-          <div className='line' />
-        </Fragment>
-      )}
-      <h2 className='text-primary'>Intereses</h2>
-      <div className='skills'>
-        {skills.map((skill, index) => (
-          <div key={index} className='p-1'>
-            <i className='fas fa-check' /> {skill}
-          </div>
-        ))}
-      </div>
+  <div className='profile-about bg-light p-2'>
+    {bio && (
+      <Fragment>
+        <h2 className='text-primary'> Biografía</h2>
+        <p>{bio}</p>
+        <div className='line' />
+      </Fragment>
+    )}
+    <h2 className='text-primary'>RNT/Identificacion turistica</h2>
+    <div className='skills'>
+      {skills.map((skill, index) => (
+        <div key={index} className='p-1'>
+          <i className='fas fa-check' /> {skill}
+        </div>
+      ))}
     </div>
-  );
+  </div>
+);
 
 ProfileAbout.propTypes = {
   profile: PropTypes.object.isRequired

@@ -23,3 +23,7 @@ export const DELETE_POST = 'DELETE_POST';
 export const ADD_POST = 'ADD_POST';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const UPDATE_PASS = 'UPDATE_PASSR';
+export const UPDATE_PASS_FAILR = 'UPDATE_PASS_FAILR';
+export const UPDATE_PASSR = 'UPDATE_PASSR';
+export const UPDATE_PASS_FAIL = 'UPDATE_PASS_FAIL';
